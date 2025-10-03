@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin } from "lucide-react";
 import emailjs from "emailjs-com";
 
 export default function Portfolio() {
@@ -22,15 +21,16 @@ export default function Portfolio() {
         e.currentTarget,
         "idB80JnV91pFWhIFJ"    // 🔹 Replace with your EmailJS Public Key
       )
-      .then(
-        (result) => {
-          alert("✅ Message sent successfully!");
-        },
-        (error) => {
-          alert("❌ Something went wrong. Please try again.");
-        }
-      );
 
+      .then(
+      () => {
+        alert("✅ Message sent successfully!");
+      },
+      () => {
+        alert("❌ Something went wrong. Please try again.");
+      }
+    );
+      
     e.currentTarget.reset(); // clear form after submit
   };
 
@@ -46,7 +46,7 @@ export default function Portfolio() {
           transition={{ delay: 0.2 }}
           className="text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed"
         >
-          I’m an 18-year-old <span className="font-medium text-gray-900">Full-Stack Developer</span> 
+          I’m an 18-year-old <span className="font-medium text-gray-900">Full-Stack Developer </span> 
           in my final year at VTDT. Over the past four years, I’ve not only grown my technical skills in coding, 
           but also learned how much I enjoy solving problems and building real-world applications.  
 
@@ -229,11 +229,9 @@ export default function Portfolio() {
 
         {/* EmailJS Contact Form */}
         <motion.form
-          {...fadeUp}
-          transition={{ delay: 0.4 }}
-          onSubmit={sendEmail}
-          className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-md border border-gray-200 text-left"
-        >
+            onSubmit={sendEmail}
+            className="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-md border border-gray-200 text-left"
+            >
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700">Name</label>
             <input type="text" name="user_name" className="w-full mt-1 p-2 border border-gray-300 rounded-lg" required />
